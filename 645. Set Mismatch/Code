@@ -1,0 +1,19 @@
+class Solution {
+    public int[] findErrorNums(int[] nums) {
+     //For this problem, we can take advantage of some math, because one thing we know about a sequence of numbers from 1 to N is that their sum should equal the Nth triangular number (N * (N + 1) / 2).
+        int N = nums.length;
+        int sum = N * (N + 1) / 2;
+        
+        int[] ans = new int[2];
+        boolean[] vis = new boolean[N+1];
+        for (int num : nums) {
+            sum -= num;
+            if (vis[num] == true){
+              ans[0] = num;
+            }
+            vis[num] = true;
+        }
+        ans[1] = sum + ans[0];
+        return ans;
+    }
+}
