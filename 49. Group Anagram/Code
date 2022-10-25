@@ -1,0 +1,25 @@
+class Solution {
+    public List<List<String>> groupAnagrams(String[] strs) {
+        //sort and compare
+        if (strs == null || strs.length == 0) 
+            return new ArrayList<>();
+        HashMap<String, ArrayList<String>> map = new HashMap<>(); // HashMap to store 
+        
+        for(String str : strs){
+            char[] arr = str.toCharArray();
+            Arrays.sort(arr);
+            String temp = String.valueOf(arr);
+           
+            if(map.containsKey(temp)) 
+            {
+               map.get(temp).add(str); // to store in that list which is present in Map contains anagram
+            }
+            else{
+              ArrayList<String> list =  new ArrayList<>(); // if map does not contains it means new pair of anagrams, so we have to make a new list and add in that list
+                list.add(str);
+                map.put(temp, list);
+            }
+        }       
+        return new ArrayList<>(map.values()); // at the end one final list to contains all anagrams pairs sublist
+    }
+}
