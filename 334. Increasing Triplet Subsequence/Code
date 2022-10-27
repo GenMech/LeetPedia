@@ -1,0 +1,18 @@
+class Solution {
+    public boolean increasingTriplet(int[] nums) {
+        
+        // We are taking to values to have a check of min and second Min
+        int i = Integer.MAX_VALUE; // i = minimum
+        int j = Integer.MAX_VALUE; // j = second minimum
+        
+        for(int n: nums){
+           if(n <= i){
+              i = n;
+           }else if(n <= j){
+              j = n;     
+           }else return true; // if we came here it means there is third number greater than above 2 values and also it is in triplet subsequence, So return true
+        }
+        
+       return false; 
+    }
+}
