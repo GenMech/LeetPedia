@@ -1,0 +1,40 @@
+Simple Take and notTake typo problem.
+
+- We will send our list , index and empty string in our recusion call.
+- Our Base case will be if our index == list.size() then we will return current string length.
+- Then take and notTake recursive calls based on the conditions.
+- notDuplicate function to check the uniqueness of the string.
+    public int maxLength(List arr) {
+        int res;
+        res = helper(arr, 0, ""); // we are taking our list arr, index and empty string 
+        return res;
+    }
+    
+    public int helper(List arr, int index, String current){
+        
+        if(index == arr.size()){
+            return current.length();
+        }
+        
+        int Take = 0;
+        if(notDuplicate(current + arr.get(index)) == true){
+           Take = helper(arr, index + 1, current + arr.get(index));
+        }
+        
+        int notTake = 0;
+        notTake = helper(arr, index + 1, current);
+        
+        return Math.max(Take, notTake);
+    }
+    
+    public boolean notDuplicate(String str){ // to check duplicates
+        int[] counts = new int[26];
+        for(char c: str.toCharArray()){
+            if(counts[c - 'a'] > 0){  // it means this char already visited
+                return false;
+            }
+			counts[c - 'a']++; 
+        }
+       return true; 
+    }
+}
