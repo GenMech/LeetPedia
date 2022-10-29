@@ -5,7 +5,7 @@ Simple Take and notTake typo problem.
 - Then take and notTake recursive calls based on the conditions.
 - notDuplicate function to check the uniqueness of the string.
 
-
+Code:
     public int maxLength(List arr) {
         int res;
         res = helper(arr, 0, ""); // we are taking our list arr, index and empty string 
