@@ -4,6 +4,8 @@ Simple Take and notTake typo problem.
 - Our Base case will be if our index == list.size() then we will return current string length.
 - Then take and notTake recursive calls based on the conditions.
 - notDuplicate function to check the uniqueness of the string.
+
+
     public int maxLength(List arr) {
         int res;
         res = helper(arr, 0, ""); // we are taking our list arr, index and empty string 
