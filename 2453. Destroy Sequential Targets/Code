@@ -1,0 +1,33 @@
+1. Map to store freq of the remainders
+2. Then store max freq of remainder in a variable
+3. Now iterate again to check two condition: 
+    - First, is that number remainder freq is equal to maximum remainder freq (max) bcs we want to element maximum number of targets 
+    - Second it should be minimum of all
+
+Code:
+
+class Solution {
+    public int destroyTargets(int[] nums, int space) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for(int i: nums){
+            int remainder = i % space;
+            map.put(remainder, map.getOrDefault(remainder, 0) + 1);
+        }
+        
+        int max = 0;
+        for(int j: map.values()){
+            if(j > max){
+                max = j;
+            }
+        }
+        
+        int min = Integer.MAX_VALUE;
+        for(int i: nums){
+            int rem = i % space;
+            if(map.get(rem) == max && i < min){
+                min = i;
+            }
+        }
+        return min;
+    }
+}
