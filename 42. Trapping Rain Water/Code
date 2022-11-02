@@ -1,0 +1,27 @@
+class Solution {
+    public int trap(int[] height) {
+        // Two pointer approach
+        int n = height.length;
+        int left = 0;
+        int right = n-1;
+        int leftM = 0, rightM = 0;
+        int res = 0;
+        
+        while(left <= right){
+        if(height[left] <= height[right]){
+            if(height[left] > leftM){
+                leftM = height[left];
+            }else res += (leftM - height[left]);
+            
+            left++;
+        }else{
+            if(height[right] > rightM){
+                rightM = height[right];
+            }else res += (rightM - height[right]);
+            
+            right--;
+        }
+        }    
+       return res; 
+    }
+}
