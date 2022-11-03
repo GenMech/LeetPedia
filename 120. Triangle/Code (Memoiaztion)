@@ -1,0 +1,31 @@
+class Solution {
+    public int minimumTotal(List<List<Integer>> triangle) {
+       
+        int p = triangle.size();
+        int q = triangle.get(p-1).size();
+        
+        int[][] dp = new int[p][q]; 
+        
+        for(int[] nums: dp){
+           Arrays.fill(nums, -1);
+        }
+        
+        int ans = helper(0, 0, triangle, dp);
+        return ans;
+        
+    }
+    
+    public int helper(int i, int j, List<List<Integer>> a, int[][] dp){
+        
+        int n = a.size();
+        if(i == n - 1) return a.get(n-1).get(j);
+        
+        if(dp[i][j] != -1) return dp[i][j];
+        
+        int down = a.get(i).get(j) + helper(i+1, j, a, dp);
+        int diagonal = a.get(i).get(j) + helper(i+1, j+1, a, dp);
+        
+        return dp[i][j] = Math.min(down, diagonal);
+        
+    } 
+}
