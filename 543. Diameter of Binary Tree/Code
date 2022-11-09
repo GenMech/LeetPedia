@@ -1,0 +1,28 @@
+class Solution {
+    int diameter = 0;
+    
+    public int diameterOfBinaryTree(TreeNode root) {
+        heigthOfBT(root);
+        return diameter;
+    }
+    
+    public int heigthOfBT(TreeNode root){
+        
+    // base condition
+        if(root == null){
+            return 0;
+        }
+        
+    // recursive calls for both left and right
+        int leftH = heigthOfBT(root.left);
+        int rightH = heigthOfBT(root.right);
+    
+    // updating diameter 
+        diameter = Math.max(diameter, leftH + rightH);
+        
+    // heigth of current node
+        int heigth = Math.max(leftH, rightH) + 1;    
+        
+        return heigth;
+    }
+}
