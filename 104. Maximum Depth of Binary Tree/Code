@@ -1,0 +1,22 @@
+class Solution {
+    public int maxDepth(TreeNode root) {
+        
+      // Level order Traversal approach  
+      Queue<TreeNode> Q = new LinkedList<TreeNode>();
+        
+      if( root == null ) return 0;
+      Q.offer(root); 
+        
+      int height = 0;  
+      while(!Q.isEmpty()){
+          int levelNum = Q.size(); 
+          for(int i = 0; i<levelNum; i++){
+            if(Q.peek().left  != null) Q.offer(Q.peek().left); 
+            if(Q.peek().right != null) Q.offer(Q.peek().right);
+            Q.poll(); 
+          }
+         height++;
+      }
+     return height;
+    }
+}
