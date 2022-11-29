@@ -1,0 +1,42 @@
+class Solution {
+   
+   int[][][] dp;
+   public int findMaxForm(String[] strs, int m, int n) {
+       int size = strs.length;
+       dp = new int[m + 1][n + 1][size + 1];
+       for(int[][] mat : dp)
+           for(int[] row : mat)
+               Arrays.fill(row, -1);
+       
+       return solve(strs, m, n, size);
+   }
+   
+   private int solve(String[] strs, int m, int n, int index){
+       
+       if(index == 0) return 0;
+       
+       if(dp[m][n][index] != -1)  return dp[m][n][index];
+       //Not Adding
+       int dontAdd = solve(strs, m, n, index - 1);
+       
+       //Adding
+       int[] count = getCount(strs[index - 1]);
+       int add = 0;
+       if(count[0] <= m && count[1] <= n)
+           add = 1 + solve(strs, m - count[0], n - count[1], index - 1);
+       
+       return dp[m][n][index] = Math.max(dontAdd, add);
+   }
+   
+   private int[] getCount(String str){
+       
+       int ones = 0, zeroes = 0;
+       for(char c : str.toCharArray()){
+           if(c == '0') zeroes++;
+           else if(c == '1') ones++;
+       }
+       
+       int[] count = new int[]{zeroes, ones};
+       return count;
+   }
+}
