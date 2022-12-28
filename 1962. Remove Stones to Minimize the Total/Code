@@ -1,0 +1,23 @@
+class Solution {
+    public int minStoneSum(int[] piles, int k) {
+        PriorityQueue<Integer> p = new PriorityQueue<>((a,b) -> b-a);
+        for(int i : piles){
+            p.add(i);
+        }
+
+        while(k > 0 && !p.isEmpty()){
+            int temp = p.poll();
+            temp -= (int)Math.floor(temp/2);
+            p.add(temp);
+            k--;
+        }
+
+        int ans = 0;
+        while(!p.isEmpty()){
+            ans += p.poll();
+        }
+        return ans;
+    }
+}
+
+// max-heap data structure, which will give us max in constant time.
