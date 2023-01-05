@@ -1,0 +1,38 @@
+class Solution {
+    public List<Integer> eventualSafeNodes(int[][] graph) {
+        int V = graph.length;
+        int[] vis = new int[V];
+        int[] check = new int[V];
+        
+        for(int i = 0; i < V; i++){
+            if(vis[i] == 0){
+              dfsCheck(i, graph, vis, check);
+            }
+        }
+        
+        List<Integer> safeNodes = new ArrayList<Integer>();
+        for(int i = 0; i < V; i++){
+            if(check[i] == 1) safeNodes.add(i);
+        }
+        return safeNodes;
+        
+    }
+    
+    public boolean dfsCheck(int node, int[][] graph, int[] vis, int[] check){
+        vis[node] = 2;
+        check[node] = 0;
+        int[] neighbour = graph[node];
+        
+        for(int i: neighbour){ //  traverse for adjacent nodes
+            if(vis[i] == 0){// if node not visited
+                if(dfsCheck(i, graph, vis, check) == true) return true;
+            }else if(vis[i] == 2){ // if node visited, then it should be on same path then only we can say that cycle exist
+                return true;
+            }
+        }
+        
+        vis[node] = 1;
+        check[node] = 1;
+        return false;
+    }
+}
