@@ -1,0 +1,19 @@
+class Solution {
+    public int canCompleteCircuit(int[] gas, int[] cost) {
+        int tank = 0;
+        int startPoint = 0;
+        int gasRemain = 0;
+
+        for(int i = 0; i < gas.length; i++){
+            tank += (gas[i] - cost[i]);
+            gasRemain += (gas[i] - cost[i]);
+            if(gasRemain < 0){ // if at any point my gasRemain becomes 0, I will move my startpoint my +1 and reset my gasRemain
+                startPoint = i+1;
+                gasRemain = 0;
+            }
+        }
+        if(tank < 0){
+            return -1;
+        }else return startPoint;
+    }
+}
