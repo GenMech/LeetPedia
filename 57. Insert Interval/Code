@@ -1,0 +1,20 @@
+class Solution {
+    public int[][] insert(int[][] intervals, int[] newInterval) {
+        List<int[]> ans = new ArrayList<>();
+
+        int n = intervals.length;
+        for(int i[]: intervals){
+           if(newInterval[1] < i[0]){  // case 1(when our new interval resides left)
+               ans.add(newInterval);
+               newInterval = i;
+           }else if(newInterval[0] > i[1]){ // case 2(when our new interval resides right)
+               ans.add(i);
+           }else{ // case 3 (resides in between hence overlapping)
+               newInterval[0] = Math.min(newInterval[0], i[0]);
+               newInterval[1] = Math.max(newInterval[1], i[1]);
+           } 
+        }
+       ans.add(newInterval); 
+       return ans.toArray(new int[ans.size()][]); 
+    }
+}
