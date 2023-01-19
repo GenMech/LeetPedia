@@ -1,0 +1,16 @@
+class Solution {
+    public int minFlipsMonoIncr(String s) {
+        int onesFreq = 0;
+        int flips = 0; // counter of flips e.g from 1 to 0 and 0 to 1
+
+        for(char c: s.toCharArray()){
+            if(c == '1'){
+                onesFreq += 1;
+            }else{
+                flips += 1;
+                flips = Math.min(flips, onesFreq);
+            }
+        }
+       return flips; 
+    }
+}
