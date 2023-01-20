@@ -1,2 +1,3 @@
 # LeetPedia
-Collection of LeetCode questions that i am doing!
+Collection of LeetCode questions that I am doing!
+Be Consistent...
