@@ -1,0 +1,35 @@
+class Solution {
+    public long minOperations(int[] nums1, int[] nums2, int k) {
+        int n = nums1.length;
+        // A case if our k is zero, That means only 2 case 
+        // 1. Either all are equal ( So return 0)
+        // 2. If anyvalue is not equal, we have to return -1
+        if(k == 0) { 
+            for(int i = 0; i < n; i++) {
+                if(nums1[i] != nums2[i])
+                    return -1;
+            }
+            return 0;
+        }
+
+        //For rest of k values we will keep the record of addition and substraction 
+        
+        long add = 0; 
+        long sub = 0;
+        
+        for(int i=0; i<n; i++) {
+            if(nums1[i] == nums2[i]) // if terms equals continue
+                continue;
+            
+            long diff = Math.abs(nums1[i] - nums2[i]); // take absolute diff
+             if(diff % k != 0) // if the diff is not divisble by k that means, it will change whether we add or substract our k
+                return -1;
+
+            if((nums1[i] - nums2[i]) > 0) // if nums 1 element is greater than nums 2 element then we have to subtract k from nums1 to make it same as nums 2
+                sub += diff / k;
+            else // if smaller then we have to add k to nums 1 element to make same as nums 2
+                add += diff / k;
+        }
+        return sub == add ? sub : -1;
+    }
+}
