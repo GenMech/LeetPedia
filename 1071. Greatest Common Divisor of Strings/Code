@@ -1,0 +1,18 @@
+class Solution {
+    public String gcdOfStrings(String str1, String str2) {
+
+        String A = str1 + str2;
+        String B = str2 + str1;
+        if(!(A).equals(B)){ 
+          return "";
+        } 
+
+        int gcd = Gcd(str1.length(), str2.length());
+        return str1.substring(0, gcd);
+    }
+
+    public int Gcd(int a, int b) {
+        if (b==0) return a;
+        return Gcd( b, a%b );
+    }
+}
