@@ -1,0 +1,38 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution { 
+    public List<Integer> rightSideView(TreeNode root) {
+        
+        List<Integer> rightEle = new ArrayList<Integer>(); 
+        rightView(root, rightEle, 0);
+        return rightEle;
+        
+    }
+    
+    public void rightView(TreeNode node, List<Integer> A, int currLen){
+        
+        if(node == null) return;
+        
+        if( currLen == A.size()){// Main idea is to store or Push in our ds when level is equal to ds
+            A.add(node.val);
+        }
+        
+        rightView(node.right, A, currLen + 1);  
+        rightView(node.left, A, currLen + 1);
+        // if we have to print left view just one change, node.left will come first
+        
+    }
+}
