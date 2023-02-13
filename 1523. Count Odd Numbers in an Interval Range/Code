@@ -1,0 +1,15 @@
+class Solution {
+    public int countOdds(int low, int high) {
+        int nums = high - low + 1;
+        
+        if(low % 2 != 0 && high % 2 != 0){
+           return (nums / 2) + 1;
+        }else return nums / 2;
+
+        // in only one case our answer can be nums/2 + 1 i.e when our low and high are both odd, else in every case it is nums / 2;
+        // case 1: odd and odd
+        // case 2: odd and even
+        // case 3: even and even
+        // case 4: even and odd
+    }
+}
