@@ -1,0 +1,13 @@
+class Solution {
+    public int strStr(String haystack, String needle) {
+        
+        int h = haystack.length();
+        int n = needle.length();
+        
+      if(n != 0){
+        if(haystack.contains(needle)){
+            return haystack.indexOf(needle);
+        }else return -1;
+    }else return 0;
+  }
+}
