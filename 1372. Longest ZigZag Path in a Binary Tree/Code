@@ -1,0 +1,22 @@
+class Solution {
+    int res = 0;
+    public int longestZigZag(TreeNode root) {
+        helper(root, true, 0);
+        helper(root, false, 0);
+        return res;
+    }
+
+    public void helper(TreeNode node, boolean rightNode, int step){
+        if(node == null){
+            return;
+        }
+        res = Math.max(step, res);
+        if(rightNode == true){
+           helper(node.right, false, step + 1); // keep going toward right
+           helper(node.left, true, 1); //restart going from root to left
+        }else{
+           helper(node.left, true, step + 1);
+           helper(node.right, false, 1);
+        }
+    }
+}
