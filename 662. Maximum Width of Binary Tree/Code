@@ -1,0 +1,39 @@
+class Pair{
+    TreeNode node;
+    int num;
+    Pair(TreeNode node, int num){
+        this.node = node;
+        this.num = num;
+    }
+}
+
+class Solution {
+    public int widthOfBinaryTree(TreeNode root) {
+        
+        if(root == null) return 0;
+        int ans = 0;   // it will store the maximum width
+        Queue<Pair> Q = new LinkedList<>();
+        Q.offer(new Pair(root, 0));
+        
+        while(!Q.isEmpty()){ 
+            int size = Q.size();
+            int mmin = Q.peek().num; // to make id starting from 0
+            int first = 0, last = 0;
+            for(int i = 0; i < size; i++){
+                int cur_Id = Q.peek().num - mmin; // in order to avoid overflow we subtract                   the minimal of that level from cuurent index
+                TreeNode node = Q.peek().node;
+                Q.poll();
+                // always store the first guy and last guy of that level
+                if(i==0) first = cur_Id;
+                if(i==size-1) last = cur_Id;
+                
+                if(node.left != null)
+                    Q.offer(new Pair(node.left, cur_Id*2 + 1));
+                if(node.right != null)
+                    Q.offer(new Pair(node.right, cur_Id*2 + 2));
+            } 
+            ans = Math.max(ans, last - first + 1);    
+        }
+         return ans;
+    }        
+}
