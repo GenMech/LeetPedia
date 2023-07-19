@@ -7,11 +7,8 @@ class Solution {
         Stack<Integer> s = new Stack<>();
         
         for(int i = 0; i < n; i++){
-            
             while(!s.isEmpty() && temperatures[i] > temperatures[s.peek()]){
-                
-                ans[s.peek()] = i - s.pop();
-                
+              ans[s.peek()] = i - s.pop();
             }
            s.push(i); 
         }
