@@ -1,0 +1,31 @@
+class Solution {
+    public String reverseOnlyLetters(String s) {
+        int n = s.length();
+        char[] list = s.toCharArray();
+        int i = 0;
+        int j = n - 1;
+
+        while(i < j){
+           if(!isValid(list[i])){
+               i++;
+           }
+
+           if(!isValid(list[j])){
+               j--;
+           }
+
+           if(isValid(list[i]) && isValid(list[j])){
+            char temp = list[i];
+            list[i] = list[j];
+            list[j] = temp;
+            i++;
+            j--;
+           }   
+        }  
+      return String.valueOf(list);
+    }
+
+    public boolean isValid(char ch){
+        return Character.isLetter(ch) && (Character.isLowerCase(ch) || Character.isUpperCase(ch));
+    }
+}
