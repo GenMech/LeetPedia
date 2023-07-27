@@ -1,0 +1,32 @@
+class Solution {
+    public String convert(String s, int numRows) {
+        if(numRows == 1){
+           return s;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        String ans = "";
+        int index;
+        int betweenEleIndex;
+        int diff = 2 * (numRows - 1);
+        int diagonalDiff;
+        
+        for(int i = 0; i < numRows; i++){
+          index = i;  
+          while(index < s.length()){
+            sb.append(s.charAt(index));
+            if(i != 0 && i != numRows - 1){
+               diagonalDiff = diff - 2 * i;
+               betweenEleIndex = index + diagonalDiff;
+
+               if (betweenEleIndex < s.length()) {
+                 sb.append(s.charAt(betweenEleIndex));
+               }         
+            }  
+            index += diff; 
+          }
+        }
+        ans = sb.toString();
+        return ans;
+    }
+}
