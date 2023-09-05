@@ -1,0 +1,77 @@
+class Solution
+{
+        public static List<Integer> findToposort(ArrayList<ArrayList<Integer>> adj,int K){
+        
+        List<Integer> topo=new ArrayList<>();
+        
+        int[] indegree=new int[K];
+        
+        for(int i=0;i<K;i++)
+        {
+            for(int it:adj.get(i)){
+                indegree[it]++;
+            }
+        }
+        
+        Queue<Integer> q=new LinkedList<>();
+        
+        for(int i=0; i<K; i++){
+            if(indegree[i] == 0) {
+                q.add(i);
+            }
+        }
+											  
+        while(!q.isEmpty()){
+            int currIndex=q.poll();
+            topo.add(currIndex);
+            
+            for(int it:adj.get(currIndex)){
+                indegree[it]--;
+                
+                if(indegree[it]==0){
+                    q.add(it);
+                }
+            }
+        }
+        
+        return topo;
+    }
+    
+    public String findOrder(String [] dict, int N, int K)
+    {
+        // Write your code here
+        
+        ArrayList<ArrayList<Integer>> adj=new ArrayList<>();
+        
+        for(int i=0;i<K;i++){
+            adj.add(new ArrayList<>());
+        }
+        
+        for(int i=0;i<dict.length -1 ;i++){
+            String str1=dict[i];
+            String str2=dict[i+1];
+            
+            int len=Math.min(str1.length(),str2.length());
+            
+            for(int ptr=0;ptr<len;ptr++){
+                
+                if(str1.charAt(ptr)!=str2.charAt(ptr)){
+                    adj.get(str1.charAt(ptr) - 'a').add(str2.charAt(ptr)-'a');
+                    break;
+                }
+            }
+        }
+        
+        List<Integer> topo=findToposort(adj,K);
+        
+        String ans="";
+        
+        for(int it:topo){
+            
+            ans+=(char)(it + (int)('a'));
+        }
+
+        return ans;
+    }
+    
+}
