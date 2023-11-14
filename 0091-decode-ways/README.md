@@ -8,11 +8,6 @@
 
 <p>To <strong>decode</strong> an encoded message, all the digits must be grouped then mapped back into letters using the reverse of the mapping above (there may be multiple ways). For example, <code>"11106"</code> can be mapped into:</p>
 
-<ul>
-	<li><code>"AAJF"</code> with the grouping <code>(1 1 10 6)</code></li>
-	<li><code>"KJF"</code> with the grouping <code>(11 10 6)</code></li>
-</ul>
-
 <p>Note that the grouping <code>(1 11 06)</code> is invalid because <code>"06"</code> cannot be mapped into <code>'F'</code> since <code>"6"</code> is different from <code>"06"</code>.</p>
 
 <p>Given a string <code>s</code> containing only digits, return <em>the <strong>number</strong> of ways to <strong>decode</strong> it</em>.</p>
