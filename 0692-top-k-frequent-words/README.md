@@ -18,9 +18,6 @@ Note that "i" comes before "love" due to a lower alphabetical order.
 <strong>Explanation:</strong> "the", "is", "sunny" and "day" are the four most frequent words, with the number of occurrence being 4, 3, 2 and 1 respectively.
 </pre>
 
-<p>&nbsp;</p>
-<p><strong>Constraints:</strong></p>
-
 <ul>
 	<li><code>1 &lt;= words.length &lt;= 500</code></li>
 	<li><code>1 &lt;= words[i].length &lt;= 10</code></li>
