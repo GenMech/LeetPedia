@@ -1,0 +1,15 @@
+class Solution {
+    public String findDifferentBinaryString(String[] nums) {
+        StringBuilder sb = new StringBuilder();
+
+        for(int i = 0; i < nums.length; i++){
+            sb.append(nums[i].charAt(i) == '1' ? '0' : '1');
+        }
+
+        return sb.toString();
+    }
+}
+
+//Its related to Cantors Diagonalisation 
+//What we are doing is we are creating a binary string by taking ith bit of ith element, As it is given in question our string contains n unique binary string each of length n.
+//We are adding by flipping the bit, if it is 0 then we are adding 1 and if it is 1 then we are adding 0 
