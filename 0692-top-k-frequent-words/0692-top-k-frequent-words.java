@@ -17,4 +17,4 @@ class Solution {
     }
 }
 
- // map.get(A1) - map.get(A2) // if we most less freq 
+ // map.get(A1) - map.get(A2) // if we most less frequency
