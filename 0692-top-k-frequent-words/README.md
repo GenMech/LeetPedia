@@ -24,7 +24,3 @@ Note that "i" comes before "love" due to a lower alphabetical order.
 	<li><code>words[i]</code> consists of lowercase English letters.</li>
 	<li><code>k</code> is in the range <code>[1, The number of <strong>unique</strong> words[i]]</code></li>
 </ul>
-
-<p>&nbsp;</p>
-<p><strong>Follow-up:</strong> Could you solve it in <code>O(n log(k))</code> time and <code>O(n)</code> extra space?</p>
-</div>
