@@ -14,3 +14,5 @@ class Solution {
         
     }
 }
+
+// Arrays.sort() method consists of two variations one in which we do not pass any arguments where it sort down the complete array be it integer array or character array
