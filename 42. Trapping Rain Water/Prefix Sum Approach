@@ -1,0 +1,33 @@
+class Solution {
+    public int trap(int[] height) {
+
+        // Prefix Max and Suffix Max
+        // TC: O(N) + O(N) + O(N) ~ O(N)
+        // SC: O(2N) ~ O(N)
+
+        int n = height.length;
+        if(n <= 2) return 0;
+        
+        int[] maxL = new int[n];
+        int[] maxR = new int[n];
+        int maxi = 0;
+        
+        maxi = height[0];
+        for(int i = 0; i < n; i++){
+            maxi = Math.max(maxi, height[i]);
+            maxL[i] = maxi; 
+        }
+        
+        maxi = height[n-1];
+        for(int i = n-1; i >= 0; i--){
+            maxi = Math.max(maxi, height[i]);
+            maxR[i] = maxi;
+        }
+        
+        int ans = 0;
+        for(int j = 0; j < n; j++){
+            ans += Math.min(maxL[j], maxR[j]) - height[j];
+        }
+       return ans; 
+    }
+}
