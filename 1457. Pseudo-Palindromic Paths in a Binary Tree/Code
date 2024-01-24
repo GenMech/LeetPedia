@@ -1,0 +1,55 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    int result = 0;
+    int[] arr = new int[10];
+    public int pseudoPalindromicPaths (TreeNode root) {
+        helper(root);
+        return result;
+    }
+    
+    public void helper(TreeNode node){
+        if(node == null){
+            return;
+        }
+        
+        arr[node.val]++; // freq or ocurrence counting
+        
+        if(node.left == null && node.right == null){
+           if(isPalin(arr)){
+               result++;
+           }
+        }else{
+               helper(node.left);
+               helper(node.right);
+             }
+         arr[node.val]--; // remove to backtrack  
+        
+    }    
+     
+    public boolean isPalin(int[] arr){ // to check count of odd and by that we ensure weather it is palindrome or not
+            int countOdd = 0;
+            for(int i = 0; i < 10; i++){
+                if(arr[i] % 2 != 0){
+                    countOdd++;
+                }
+            }
+            if(countOdd > 1){ 
+              return false;
+            }
+           return true; 
+    }
+}
