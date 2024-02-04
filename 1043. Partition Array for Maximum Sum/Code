@@ -1,0 +1,23 @@
+class Solution {
+    public int maxSumAfterPartitioning(int[] arr, int k) {
+        int n = arr.length;
+        int[] dp = new int[n + 1];
+
+        for (int i = 1; i <= n; i++) {
+            int maximum = 0;
+            int maxSum = 0;
+            for (int j = 1; j <= k && i - j >= 0; j++) {
+                maximum = Math.max(maximum, arr[i - j]);
+                maxSum = Math.max(maxSum, dp[i - j] + maximum * j);
+            }
+            dp[i] = maxSum;
+        }
+
+        return dp[n];
+    }
+}
+
+// Two Cases (For each element i, look back up to k elements to find the partition that maximizes the sum)
+// Finding the maximum value in the current partition (max), which will be used to update all elements in the partition to this value.
+// Calculating the maximum sum for the current partition by adding the product of the maximum value (max) and the partition size (j) to
+// the maximum sum achievable before this partition started (dp[i-j]).
