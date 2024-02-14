@@ -1,0 +1,28 @@
+class Solution {
+    public int[] rearrangeArray(int[] nums) {
+        ArrayList<Integer> arrP = new ArrayList<>();
+        ArrayList<Integer> arrN = new ArrayList<>();
+        int[] res = new int[nums.length];
+
+        for(int i = 0; i < nums.length; i++){
+           if (nums[i] > 0) {
+                arrP.add(nums[i]);
+           } else {
+                arrN.add(nums[i]);
+           }
+        }
+
+        int indP = 0;
+        int indN = 0;
+
+        for(int i = 0; i < nums.length; i++){
+            if(i % 2 != 0){
+                res[i] = arrN.get(indP++);
+            }else{
+                res[i] = arrP.get(indN++);
+            }
+        }
+
+        return res;
+    }
+}
