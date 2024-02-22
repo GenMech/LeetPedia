@@ -1,0 +1,18 @@
+class Solution {
+    public int findJudge(int n, int[][] trust) {
+        if(n == 1) return 1;
+
+        int[] freq = new int[n+1];
+        Set<Integer> set = new HashSet<>(); //trust set
+
+        for(int i=0; i < trust.length; i++){
+            set.add(trust[i][0]);
+            freq[trust[i][1]] += 1;
+        }
+
+        for(int i = 0; i <= n; i++){
+            if(freq[i] == n-1 && !set.contains(i)) return i;  // this means i person is trused by all and ith person trust no one
+        }
+        return -1;
+    }
+}
