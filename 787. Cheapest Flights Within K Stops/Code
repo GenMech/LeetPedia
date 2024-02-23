@@ -1,8 +1,6 @@
 class Solution {
     public int findCheapestPrice(int n, int[][] flights, int src, int dst, int k) {
 
-        // I will do it properly asap revising graph
-
         List<List<int[]>> adj = new ArrayList<>();
         for (int i = 0; i < n; i++){ 
           adj.add(new ArrayList<>());
