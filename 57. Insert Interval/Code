@@ -4,6 +4,7 @@ class Solution {
 
         int n = intervals.length;
         for(int i[]: intervals){
+        // System.out.println("i:" + i[0] + "" + i[1]);
            if(newInterval[1] < i[0]){  // case 1(when our new interval resides left)
                ans.add(newInterval);
                newInterval = i;
