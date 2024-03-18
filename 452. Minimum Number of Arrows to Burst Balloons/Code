@@ -1,0 +1,24 @@
+class Solution {
+    public int findMinArrowShots(int[][] points) {
+        Arrays.sort(points, (a,b) -> Integer.compare(a[0], b[0]));
+
+        int y = points[0][1];
+        int res = 1;
+
+        for(int i = 1; i < points.length; i++){
+            if(points[i][0] > y){
+                res++;
+                y = points[i][1];
+            }
+            y = Math.min(points[i][1], y);
+        }
+
+        return res;
+    }
+}
+
+// We are counting extra arrows, So if there is a overlap then we don't need an arrow.
+
+// i1 end > i2 start
+// i1 start < i2 end
+
