@@ -1,0 +1,25 @@
+class Solution {
+    public boolean isValid(String s) {
+        if (s.length()%2 != 0){ // if odd characters so fals
+            return false;
+        } 
+        Stack<Character> stack = new Stack<>();
+        
+        for(int i=0; i<s.length(); i++){
+            char A = s.charAt(i);
+            if(A == '(' || A =='{' || A=='['){ 
+                stack.push(A);
+            }else{
+                if(stack.isEmpty()){ 
+                    return false;
+                }    
+                char t = stack.peek();
+                if((t=='(' && A!=')') || (t=='{' && A!='}') || (t=='[' && A!=']')) 
+                    return false;
+                else stack.pop();
+            }
+           
+        }
+        return stack.isEmpty();
+    }
+}
