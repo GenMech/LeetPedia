@@ -1,0 +1,16 @@
+class Solution {
+    public boolean wordBreak(String s, List<String> wordDict) {
+        boolean[] dp = new boolean[s.length()];
+       
+        for(int i = 0; i < s.length(); i++){
+            for(int ind = 0; ind <= i; ind++){
+                if((ind == 0 || dp[ind - 1] == true) && 
+                    wordDict.contains(s.substring(ind, i + 1))){
+                    dp[i] = true;
+                    break;
+                }
+            }
+        }
+        return dp[s.length() - 1];
+    }
+}
