@@ -28,3 +28,5 @@ private boolean bfs(int node, int[][] graph, int[] color) {
 	return true;
 }
 }
+
+// Revised
