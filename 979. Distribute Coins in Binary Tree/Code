@@ -1,0 +1,17 @@
+class Solution {
+    int moves = 0;
+
+    public int dfs(TreeNode node){
+        if(node == null) return 0;
+        int leftN = dfs(node.left);
+        int rightN = dfs(node.right);
+        moves += Math.abs(leftN) + Math.abs(rightN);
+
+        return node.val + leftN + rightN - 1;
+    }
+
+    public int distributeCoins(TreeNode root) {
+        dfs(root);
+        return moves;
+    }
+}
