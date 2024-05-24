@@ -1,0 +1,47 @@
+class Solution {
+    public boolean isBeautiful(ArrayList<Integer> arr, int k){
+        Collections.sort(arr);
+ 
+        int l = 0;
+        int r = 0;
+        int n = arr.size();
+
+        if(n == 0){
+            return false;
+        }
+    
+         while(r < n){
+           if(arr.get(r) - arr.get(l) == k){
+            return false;
+           }else if(arr.get(r) - arr.get(l) > k)
+            l++;
+            else
+            r++;
+        } 
+        return true;
+    }
+
+    public int beautifulSubsets(int[] nums, int k) {
+        int n = nums.length;
+        int ans = 0;
+        
+        for(int i = 0; i < (1<<n); i++){ // loop will run 0  to 2^n-1
+            
+            ArrayList<Integer> list = new ArrayList<>();
+            
+            for(int j = 0; j < n; j++){
+                if((i & (1<<j)) > 0){
+                  list.add(nums[j]);
+                }
+            }
+            
+            if(isBeautiful(list, k)){
+              ans++;
+            }
+        }
+       return ans; 
+    }
+}
+
+// O(2^n * n * nlogn)
+ 
