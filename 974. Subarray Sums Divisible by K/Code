@@ -9,7 +9,7 @@ class Solution {
            sum += i;
            int rem = sum % k;
 
-           if(rem < 0) rem += k;
+           if(rem < 0) rem += k; // For negative remainder
 
            if(map.containsKey(rem)){
                int temp = map.get(rem);
@@ -22,3 +22,5 @@ class Solution {
        return count; 
     }
 }
+
+// revised
