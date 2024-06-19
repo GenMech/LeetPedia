@@ -25,3 +25,5 @@ class Solution {
        return ans.next; // .next bcs we dont want 0 value ( we considered it initially )
     }
 }
+
+// Revised
