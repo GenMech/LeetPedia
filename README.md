@@ -1,3 +1,3 @@
-# LeetPedia V2
+# LeetPedia
 Collection of LeetCode questions that I am doing!
 
