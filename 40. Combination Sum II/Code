@@ -1,0 +1,21 @@
+class Solution {
+public List<List<Integer>> combinationSum2(int[] candidates, int target) {
+   List<List<Integer>> list = new LinkedList<List<Integer>>();
+   Arrays.sort(candidates);
+   helper(list, new ArrayList<Integer>(), candidates, target, 0);
+   return list;
+}
+
+private void helper(List<List<Integer>> list, List<Integer> ds, int[] cand, int target, int start) {
+   
+   if(target == 0) list.add(new ArrayList<>(ds));
+
+   for (int i = start; i < cand.length; i++) {
+         if(i > start && cand[i] == cand[i-1]) continue; //skip duplicates
+         if(cand[i] > target) break;
+         ds.add(cand[i]);
+         helper(list, ds, cand, target - cand[i], i+1);
+         ds.remove(ds.size() - 1);
+      }
+   }
+}
