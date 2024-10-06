@@ -1,0 +1,27 @@
+class Solution {
+    public boolean areSentencesSimilar(String sentence1, String sentence2) {
+        String[] w1 = sentence1.split(" ");
+        String[] w2 = sentence2.split(" ");
+
+        if (w1.length < w2.length) {
+            String[] temp = w1;
+            w1 = w2;
+            w2 = temp;
+        }
+
+        int start = 0;
+        int end = 0;
+        int n1 = w1.length;
+        int n2 = w2.length;
+
+        while(start < n2 && w1[start].equals(w2[start])){
+            start++;
+        } 
+
+        while(end < n2 && w1[n1 - end - 1].equals(w2[n2 - end - 1])){
+            end++;
+        }
+
+        return start + end >= n2;
+    }
+}
